@@ -18,11 +18,20 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            flex-direction: column;
         }
         .header h1 {
             font-size: 3em;
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
+            border-radius: 10px;
+        }
+        .countdown {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
             border-radius: 10px;
         }
         .content {
@@ -35,13 +44,26 @@
             background: #333;
             border-radius: 10px;
         }
+        .server-ip {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Willkommen auf unserem Minecraft Server!</h1>
+        <p id="countdown" class="countdown"></p>
     </div>
     <div class="content">
+        <div class="section">
+            <h2>Server-IP</h2>
+            <p class="server-ip">play.example.com</p>
+        </div>
         <div class="section">
             <h2>Über den Server</h2>
             <p>Unser Server bietet eine einzigartige Wirtschaft mit der Währung Emeralds. Du kannst handeln, kaufen und verkaufen, um dein Imperium aufzubauen!</p>
@@ -56,5 +78,32 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetTime = new Date("2025-02-28T19:00:00").getTime();
+            
+            function calculateTimeLeft() {
+                const distance = targetTime - new Date().getTime();
+                if (distance < 0) {
+                    document.getElementById("countdown").innerHTML = "Der Server ist gestartet!";
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = `Noch ${days}d ${hours}h ${minutes}m ${seconds}s bis der Server startet!`;
+            }
+            
+            setInterval(calculateTimeLeft, 1000);
+            calculateTimeLeft();
+        }
+        
+        updateCountdown();
+    </script>
 </body>
 </html>
