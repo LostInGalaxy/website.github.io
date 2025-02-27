@@ -19,6 +19,7 @@
             justify-content: center;
             text-align: center;
             flex-direction: column;
+            position: relative;
         }
         .header h1 {
             font-size: 3em;
@@ -33,6 +34,16 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 10px;
+        }
+        .source {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8em;
+            color: black;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
         }
         .content {
             padding: 50px;
@@ -52,21 +63,40 @@
             border-radius: 5px;
             display: inline-block;
         }
+        .nav {
+            background: #222;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="https://discord.gg/hST9dndV" target="_blank">Discord</a>
+    </div>
     <div class="header">
         <h1>Willkommen auf unserem Minecraft Server!</h1>
         <p id="countdown" class="countdown"></p>
+        <p class="source">Source: <a href="https://images.steamusercontent.com/ugc/2310974141604980016/B4EF3A7A2D1772DE26B1A6F51CE33A04FD8BB917/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" target="_blank">Steamusercontent</a></p>
     </div>
     <div class="content">
         <div class="section">
             <h2>Server-IP</h2>
-            <p class="server-ip">play.example.com</p>
+            <p class="server-ip">minecraftbuilding2.g-portal.game</p>
         </div>
         <div class="section">
             <h2>Über den Server</h2>
-            <p>Unser Server bietet eine einzigartige Wirtschaft mit der Währung Emeralds. Du kannst handeln, kaufen und verkaufen, um dein Imperium aufzubauen!</p>
+            <p>Unser Server bietet eine einzigartige Wirtschaft mit der Währung Emeralds. Du kannst handeln, kaufen und verkaufen!</p>
         </div>
         <div class="section">
             <h2>Features</h2>
@@ -82,7 +112,7 @@
     <script>
         function updateCountdown() {
             const now = new Date().getTime();
-            const targetTime = new Date("2025-02-28T19:00:00").getTime();
+            const targetTime = new Date("2025-02-28T15:00:00").getTime();
             
             function calculateTimeLeft() {
                 const distance = targetTime - new Date().getTime();
